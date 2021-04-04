@@ -1,0 +1,24 @@
+{
+  "name": "kick-start-ts",
+  "version": "1.0.0",
+  "description": "kick start Type script tutorial",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashantvermaiiitb/kick-start-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prashantvermaiiitb/kick-start-ts/issues"
+  },
+  "homepage": "https://github.com/prashantvermaiiitb/kick-start-ts#readme"
+}
