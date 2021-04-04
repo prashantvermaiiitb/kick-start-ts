@@ -8,7 +8,8 @@
     "typescript": "^4.2.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"tsc ./src/hello-world.ts"
   },
   "repository": {
     "type": "git",
