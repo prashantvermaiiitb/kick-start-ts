@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"tsc ./src/hello-world.ts"
+    "build": "tsc ./src/hello-world.ts",
+    "watch": "tsc ./src/hello-world.ts --watch",
+    "start": "node ./src/hello-world.js"
   },
   "repository": {
     "type": "git",
