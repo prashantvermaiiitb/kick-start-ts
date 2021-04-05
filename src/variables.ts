@@ -73,19 +73,92 @@ name : ${name}`;
       NI = 0,
       ME = 10,
       EE,
-      DE = 190
-      ,
+      DE = 190,
     }
     const myRating = Rating.DE;
     console.log(
-      "🚀 ~ file: variables.ts ~ line 79 ~ decalareEnumTypes ~ Rating",Rating.DE
+      "🚀 ~ file: variables.ts ~ line 79 ~ decalareEnumTypes ~ Rating",
+      Rating.DE
     );
   };
+  /**
+   * ! In this case we will be having errors at the Runtime not at the compile time.
+   */
+  const declareAnyType = function () {
+    // let randomValue: any = 8993; // after this it's decided as the number
+    let randomValue: any = function () {
+      console.log("placeholder function");
+    }; // after this it's decided as the number
+    console.log(typeof randomValue);
+    // randomValue.name = "prashant"; // ! this will give error at the runtime because name is internal property
+    randomValue.name1 = "prashant"; // ! this will give error at the runtime because name is internal property
+    randomValue.myfunction = function () {
+      return "I am any type.";
+    };
+    console.log(
+      "🚀 ~ file: variables.ts ~ line 86 ~ declareAnyType ~ randomValue",
+      randomValue,
+      randomValue.name,
+      randomValue.name1,
+      randomValue.myfunction()
+    );
+    //? point is typescript does not even throw any error on the above statements so TS3.0 introduces the 'Unknown' datatype.
+    //? so you cannot call any property of the Unknown type nor you can call and construct them.
+    //? now we have to use a type assertion to tell the compiler that what we are exepcting in the 'Unknown' type.
+    //? so typescript now consider that we have made the necessary check similar to typecasting in the other language.
+  };
+  /**
+   * Declaring the Unknown type.
+   */
+  const declareUnknownType = function () {
+    let myVariable: unknown = "10a";
+    console.log((myVariable as string).toUpperCase());
+    // console.log(myVariable.length); // ! will give error you have to do TypeCasting for this to succeed.
+  };
 
-  
+  /**
+   * Declaring User type guard so that unknown data type is being called and used.
+   */
+  const declareUserDefinedTypeGuard = function () {
+    let myVariable: unknown = 10;
+    const validateObject = function (obj: any): obj is { name: string } {
+      return true;
+    };
+    //! removing this if statement will give you error.
+    if (validateObject(myVariable)) {
+      console.log(myVariable.name);
+    }
+  };
+
+  /**
+   * Type inferences
+   */
+  const typeInferences = function () {
+    let a = 10; // ? Typescript will infer the type of the 'a' hence will not be able to define improper value.
+    a = 20;
+    // a = "hello";//! error will come here because we have initialised a already
+
+    let b; //since we have not given the initial value nothing wrong
+    b = 10;
+    b = true;
+
+    // b. will not be giving any intellisense help
+
+    //Union of Types
+    //? this will restrict the type of the multi variable either to boolean or number but not apart from them
+    let multi: boolean | number = true; //multi will be limited to these 2 data types
+    multi = 10;
+    console.log("🚀 ~ file: variables.ts ~ line 150 ~ typeInferences ~ multi", multi)
+
+  };
+
   declaringArray();
   declareTuple();
   decalareEnumTypes();
+  declareAnyType();
+  declareUnknownType();
+  declareUserDefinedTypeGuard();
+  typeInferences();
   let sentence2 = sentence;
   return sentence2;
 }
