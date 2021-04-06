@@ -121,6 +121,37 @@ function default_1() {
         multi = 10;
         console.log("🚀 ~ file: variables.ts ~ line 150 ~ typeInferences ~ multi", multi);
     };
+    var functionDeclarations = function () {
+        /**
+         * By default all the parameters are considered to be required in the TS
+         * Here in the example trying to return multi type
+         * @param a
+         * @param b
+         * @returns
+         */
+        var a = function (a, b) {
+            if (a > b) {
+                return true;
+            }
+            else {
+                return -1;
+            }
+        };
+        console.log("result of comparison...", a(4, 5));
+        console.log("result of comparison....", a(14, 5));
+        /**
+         * Optional parameter can be there in the TS by addition of ? after the parameter name
+         * Optional parameters must always be after the required parameters in that case you have to see the order parameters
+         * Default parameters : will have the default value assigned to them
+         */
+        // const b = function (x?: number, z: number, y: number = 90) { // ! will be giving error
+        var b = function (z, x, y) {
+            if (y === void 0) { y = 90; }
+            return (x ? x + y : y) + z;
+        };
+        // console.log("🚀 ~ file: variables.ts ~ line 181 ~ b ~ b", b()); // ! will be giving error for the z
+        console.log("🚀 ~ file: variables.ts ~ line 181 ~ b ~ b", b(5));
+    };
     declaringArray();
     declareTuple();
     decalareEnumTypes();
@@ -128,6 +159,7 @@ function default_1() {
     declareUnknownType();
     declareUserDefinedTypeGuard();
     typeInferences();
+    functionDeclarations();
     var sentence2 = sentence;
     return sentence2;
 }
