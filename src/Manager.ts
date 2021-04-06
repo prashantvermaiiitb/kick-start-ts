@@ -8,7 +8,7 @@ export default class Manager extends Employee {
     name: string,
     nickName: string,
     employeeDOB: string,
-    title: string
+    title: string = "manager"
   ) {
     super(name, nickName, employeeDOB);
     this.title = title;
@@ -17,10 +17,12 @@ export default class Manager extends Employee {
     return this.employeeNickName;
   }
   delegateTasks() {
+    // console.log("directly writing DOB...", this.employeeDOB); //! private data member only
+    console.log("fetching date of birth ... ", this.getDateOfbirth());
     console.log(
       `${
         this.employeeName
-      } aka ${this.getNickName()}: Please delegate the task.`
+      } aka ${this.getNickName()}: Please delegate the task and your DOB is ${super.getDateOfbirth()}`
     );
   }
   printManagerInformation() {}

@@ -22,6 +22,7 @@ var Employee_1 = require("./Employee");
 var Manager = /** @class */ (function (_super) {
     __extends(Manager, _super);
     function Manager(name, nickName, employeeDOB, title) {
+        if (title === void 0) { title = "manager"; }
         var _this = _super.call(this, name, nickName, employeeDOB) || this;
         _this.title = title;
         return _this;
@@ -30,7 +31,9 @@ var Manager = /** @class */ (function (_super) {
         return this.employeeNickName;
     };
     Manager.prototype.delegateTasks = function () {
-        console.log(this.employeeName + " aka " + this.getNickName() + ": Please delegate the task.");
+        // console.log("directly writing DOB...", this.employeeDOB); //! private data member only
+        console.log("fetching date of birth ... ", this.getDateOfbirth());
+        console.log(this.employeeName + " aka " + this.getNickName() + ": Please delegate the task and your DOB is " + _super.prototype.getDateOfbirth.call(this));
     };
     Manager.prototype.printManagerInformation = function () { };
     return Manager;

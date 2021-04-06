@@ -14,9 +14,9 @@ Utils.log(`Your first message : ${message}`);
 Utils.log(Variables());
 interfaces.interfaceDemo({ firstName: "Jane", lastName: "dorsy" });
 interfaces.nonInterfaceDemo({ firstName: "John", lastName: "hanna" });
-let employee = new Employee("John", "Jony");
+let employee = new Employee("John", "Jony", "08071982");
 employee.greet();
-let manager = new Manager("Bruce", "willy");
+let manager = new Manager("Bruce", "willy", "09092007");
 manager.delegateTasks();
 manager.greet();
 console.log(
