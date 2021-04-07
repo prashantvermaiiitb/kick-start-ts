@@ -15,6 +15,7 @@ function default_1() {
     var b1 = undefined;
     //! this will give you error
     //   n = true;
+    // b1 = 56565;
     var baba = null;
     var kaka = undefined;
     console.log(baba, " and ", kaka);
@@ -73,7 +74,7 @@ function default_1() {
         }; // after this it's decided as the number
         console.log(typeof randomValue);
         // randomValue.name = "prashant"; // ! this will give error at the runtime because name is internal property
-        randomValue.name1 = "prashant"; // ! this will give error at the runtime because name is internal property
+        randomValue.name1 = "prashant"; // ! this will give error at the runtime because name1 is not an internal property
         randomValue.myfunction = function () {
             return "I am any type.";
         };
@@ -95,13 +96,18 @@ function default_1() {
      * Declaring User type guard so that unknown data type is being called and used.
      */
     var declareUserDefinedTypeGuard = function () {
-        var myVariable = 10;
+        // let myVariable: unknown = 10;
+        var myVariable = { name: "prashant", value: 10 };
+        // myVariable.name = "Prashant"; // ! this will be an error
+        //? here we are specifying the check in the TS that object will be having name property and this check is for that
+        //? this is NOT the return type of the function, This is just a validation check.
+        // return !!obj && obj.hasOwnProperty("name");
         var validateObject = function (obj) {
-            return true;
+            return !!obj && typeof obj === "object" && "name" in obj;
         };
         //! removing this if statement will give you error.
         if (validateObject(myVariable)) {
-            console.log(myVariable.name);
+            console.log("Reading the name property from myVariable : ", myVariable.name);
         }
     };
     /**

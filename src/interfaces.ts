@@ -1,5 +1,5 @@
 /**
- * Person object that will be used in different functions
+ * Person object that will be used in different functions as the parameter
  */
 interface Person {
   firstName: string;
